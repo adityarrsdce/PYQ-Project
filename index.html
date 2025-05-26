@@ -66,10 +66,9 @@
     <label for="branch">Select Branch</label>
     <select id="branch" onchange="showExamOptions()">
       <option value="">--Select Branch--</option>
-     <option value="dsa">DSA</option>
-<option value="oops">OOPs</option>
-<option value="maths">Mathematics</option>
-
+      <option value="cse">Computer Science</option>
+      <option value="ece">Electronics</option>
+      <option value="me">Mechanical</option>
     </select>
 
     <div id="examDiv" style="display:none;">
@@ -85,9 +84,9 @@
       <label for="subject">Select Subject</label>
       <select id="subject" onchange="showYears()">
         <option value="">--Select Subject--</option>
-        <option value="OOPs">OOPs</option>
-        <option value="DSA">DSA</option>
-        <option value="Mathematics">Mathematics</option>
+        <option value="maths">Mathematics</option>
+        <option value="oops">OOPs</option>
+        <option value="dsa">DSA</option>
       </select>
     </div>
 
@@ -129,27 +128,29 @@
       document.getElementById("downloadDiv").style.display = "block";
     }
 
-    function downloadFile() {
-      const branch = document.getElementById("branch").value;
-      const exam = document.getElementById("exam").value;
-      const subject = document.getElementById("subject").value;
-      const year = document.getElementById("year").value;
+   function downloadFile() {
+  const branch = document.getElementById("branch").value;
+  const exam = document.getElementById("exam").value;
+  const subject = document.getElementById("subject").value;
+  const year = document.getElementById("year").value;
 
-      if (!branch || !exam || !subject || !year) {
-        alert("Please select all options (Branch, Exam, Subject, Year)");
-        return;
-      }
+  if (!branch || !exam || !subject || !year) {
+    alert("Please select all options (Branch, Exam, Subject, Year)");
+    return;
+  }
 
-      const filename = `${subject}-${year}.pdf`;
-      const fileUrl = `/${filename}`;  // Since files are in root directory
+  const filename = `${subject}-${year}.pdf`;
 
-      const link = document.createElement('a');
-      link.href = fileUrl;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+  // 👉 FIX: Add your GitHub Pages repo name here
+  const fileUrl = `/btech-pyqs/${filename}`;
+
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
   </script>
 </body>
 </html>
