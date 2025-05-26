@@ -84,9 +84,9 @@
       <label for="subject">Select Subject</label>
       <select id="subject" onchange="showYears()">
         <option value="">--Select Subject--</option>
-        <option value="maths">Mathematics</option>
-        <option value="oops">OOPs</option>
-        <option value="dsa">DSA</option>
+        <option value="OOPs">OOPs</option>
+        <option value="DSA">DSA</option>
+        <option value="Mathematics">Mathematics</option>
       </select>
     </div>
 
@@ -128,29 +128,27 @@
       document.getElementById("downloadDiv").style.display = "block";
     }
 
-   function downloadFile() {
-  const branch = document.getElementById("branch").value;
-  const exam = document.getElementById("exam").value;
-  const subject = document.getElementById("subject").value;
-  const year = document.getElementById("year").value;
+    function downloadFile() {
+      const branch = document.getElementById("branch").value;
+      const exam = document.getElementById("exam").value;
+      const subject = document.getElementById("subject").value;
+      const year = document.getElementById("year").value;
 
-  if (!branch || !exam || !subject || !year) {
-    alert("Please select all options (Branch, Exam, Subject, Year)");
-    return;
-  }
+      if (!branch || !exam || !subject || !year) {
+        alert("Please select all options (Branch, Exam, Subject, Year)");
+        return;
+      }
 
-  const filename = `${subject}-${year}.pdf`;
+      const filename = `${subject}-${year}.pdf`;
+      const fileUrl = `/${filename}`;  // Since files are in root directory
 
-  // 👉 FIX: Add your GitHub Pages repo name here
-  const fileUrl = `/btech-pyqs/${filename}`;
-
-  const link = document.createElement('a');
-  link.href = fileUrl;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   </script>
 </body>
 </html>
